@@ -13,6 +13,7 @@ namespace YandexMusicUWP
 {
     public sealed partial class MainPage : Page
     {
+        readonly string AccessToken = ""; // Replace with your actual access token
         private readonly YandexMusicApi _api = new YandexMusicApi(); 
         private List<YTrack> _tracks = new List<YTrack>();
         private YTrack _selectedTrack;
@@ -26,8 +27,19 @@ namespace YandexMusicUWP
         private async void InitializeApi()
         {
             // Authenticate guest account
-            //TODO
-            await _api.User.AuthorizeAsync(default,default);
+            try
+            {
+                Yandex.Music.Api.Common.AuthStorage storage = new Yandex.Music.Api.Common.AuthStorage()
+                {
+                    IsAuthorized = true,
+                    Token = AccessToken,
+                };
+                await _api.User.AuthorizeAsync(storage, default);
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine("[ex] InitializeApi - User.Authorize error: " + ex.Message);
+            }
         }
 
         private async void SearchButton_Click(object sender, RoutedEventArgs e)
@@ -36,15 +48,34 @@ namespace YandexMusicUWP
 
             try
             {
-                //TODO
+                Yandex.Music.Api.Common.AuthStorage storage = new Yandex.Music.Api.Common.AuthStorage()
+                {
+                    IsAuthorized = true,
+                    Token = AccessToken,
+                };
+
                 // Perform search
-                var searchResponse = await _api.Search.TrackAsync(default,SearchBox.Text);
-                _tracks = default;//searchResponse.Result.Tracks.Items.ToList();
+                Yandex.Music.Api.Models.Common.YResponse<Yandex.Music.Api.Models.Search.YSearch> searchResponse
+                    = await _api.Search.TrackAsync(storage, SearchBox.Text);
+
+                // Convert YSearchResult<YSearchTrackModel> to List<YTrack>
+                _tracks = searchResponse.Result.Tracks.Results
+                    .Select(track => new YTrack
+                    {
+                        Id = track.Id,
+                        Title = track.Title,
+                        Artists = track.Artists,
+                        Albums = default,//track.Albums,
+                        DurationMs = track.DurationMs,
+                        CoverUri = track.CoverUri,
+                        // Map other properties as needed
+                    })
+                    .ToList();
 
                 TracksList.ItemsSource = _tracks.Select(t => new
                 {
                     t.Title,
-                    t.Artists,
+                    Artists = string.Join(", ", t.Artists.Select(a => a.Name)),
                     t.Id
                 });
             }
@@ -63,20 +94,35 @@ namespace YandexMusicUWP
             PlayButton.IsEnabled = true;
         }
 
+     
         private async void PlayButton_Click(object sender, RoutedEventArgs e)
         {
             if (_selectedTrack == null) return;
 
             try
             {
-                // Get track link
-                //TODO
-                var downloadInfo = /*await*/ _api.Track.GetDownloadInfoAsync(default,_selectedTrack.Id.ToString());
-                var storage = /*await*/ _api.Track.GetFileLinkAsync(/*downloadInfo.Result.First()*/default, _selectedTrack.Id);
+                Yandex.Music.Api.Common.AuthStorage authstorage = new Yandex.Music.Api.Common.AuthStorage()
+                {
+                    IsAuthorized = true,
+                    Token = AccessToken,
+                };
+
+                // Get track download metadata
+                var downloadInfoResponse = await _api.Track.GetMetadataForDownloadAsync(authstorage, _selectedTrack.Id.ToString());
+                var downloadInfo = downloadInfoResponse.Result.FirstOrDefault();
+
+                if (downloadInfo == null)
+                {
+                    Debug.WriteLine("[ex] Play error: No download info available for the selected track.");
+                    return;
+                }
+
+                // Get file link
+                var fileLink = await _api.Track.GetFileLinkAsync(authstorage, _selectedTrack.Id);
 
                 // Play track
                 var player = BackgroundMediaPlayer.Current;
-                player.SetUriSource(new Uri(storage.Result));
+                player.SetUriSource(new Uri(fileLink));
                 player.Play();
             }
             catch (Exception ex)
