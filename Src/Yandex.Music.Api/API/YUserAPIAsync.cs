@@ -1,4 +1,5 @@
 using System;
+using System.Diagnostics;
 using System.Net.Http;
 using System.Security.Authentication;
 using System.Text.RegularExpressions;
@@ -87,7 +88,10 @@ namespace Yandex.Music.Api.API
         public async Task AuthorizeAsync(AuthStorage storage, string token)
         {
             if (string.IsNullOrEmpty(token))
-                throw new Exception("Задан пустой токен авторизации.");
+            {
+                Debug.WriteLine("[!] Задан пустой токен авторизации.");
+                return;
+            }
 
             storage.Token = token;
 
@@ -96,7 +100,12 @@ namespace Yandex.Music.Api.API
 
             // Если не авторизован, то авторизуем
             if (string.IsNullOrEmpty(authInfo.Result.Account.Uid))
-                throw new Exception("Пользователь незалогинен.");
+            {
+                Debug.WriteLine("[!] Пользователь не залогинен.");
+                storage.IsAuthorized = false;
+                storage.User = default;
+                return;
+            }
 
             // Флаг авторизации
             storage.IsAuthorized = true;

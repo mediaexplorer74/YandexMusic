@@ -1,0 +1,36 @@
+﻿<Page
+    x:Class="YandexMusicUWP.MainPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:YandexMusicUWP"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <!-- Панель поиска -->
+        <StackPanel Orientation="Horizontal" Padding="10">
+            <TextBox x:Name="SearchBox" Width="300" PlaceholderText="Поиск треков..."/>
+            <Button x:Name="SearchButton" Content="Найти" Margin="10,0,0,0" Click="SearchButton_Click"/>
+            <Button x:Name="PlayButton" Content="▶" Margin="10,0,0,0" Click="PlayButton_Click" IsEnabled="False"/>
+        </StackPanel>
+
+        <!-- Список результатов -->
+        <ListView x:Name="TracksList" Grid.Row="1" SelectionChanged="TracksList_SelectionChanged">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel Margin="10">
+                        <TextBlock Text="{Binding Title}" FontSize="16"/>
+                        <TextBlock Text="{Binding Artists[0].Name}" FontSize="12" Foreground="Gray"/>
+                    </StackPanel>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+    </Grid>
+</Page>
