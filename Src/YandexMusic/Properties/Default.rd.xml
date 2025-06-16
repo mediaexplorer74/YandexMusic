@@ -17,15 +17,13 @@
 
 <Directives xmlns="http://schemas.microsoft.com/netfx/2013/01/metadata">
   <Application>
-    <!--
-      An Assembly element with Name="*Application*" applies to all assemblies in
-      the application package. The asterisks are not wildcards.
-    -->
-    <Assembly Name="*Application*" Dynamic="Required All" />
-    
-    
-    <!-- Add your application specific runtime directives here. -->
-
-
+    <!--<Assembly Name="*Application*" Dynamic="Required All" />-->
+    <Namespace Name="Microsoft.Extensions.Options" Activate="Required Public" />
+    <Namespace Name="Microsoft.Extensions.Logging" Activate="Required Public" />
+ 
+    <Namespace Name="Microsoft.Toolkit.Uwp.UI.Animations.Expressions" 
+               Dynamic="Required PublicAndInternal" />
+  
+    <!--<Assembly Name="Microsoft.Toolkit.Uwp.Notifications" Dynamic="Required All" />-->
   </Application>
 </Directives>

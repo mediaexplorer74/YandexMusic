@@ -10,9 +10,9 @@ I decided to share my dialogue with Trae AI.. how to create Yandex Music uwp app
 So, look at Wiki: https://github.com/mediaexplorer74/YandexMusic/wiki/
 
 ## Screenshots
-![Windows 11 Desktop](Images/sshot01.png)
-![Windows 11 Desktop](Images/sshot02.png)
-
+![Windows 11 Lite](Images/sshot01.png)
+![Windows 11 Lite](Images/sshot02.png)
+![Windows 10 Mobile](Images/sshot03.png)
 
 ## Solution (app) structure
 - Special uap version of Yandex.Music.Api lib (Win SDK 16299 used. draft)
@@ -20,8 +20,8 @@ So, look at Wiki: https://github.com/mediaexplorer74/YandexMusic/wiki/
 
 
 ## Status 
-- Experimenting with Trae IDE
-- Work-in-progress
+- Experimenting with Trae IDE 
+- Yandex.Music "Ultra-lite" assembled for W10M (ARM, Min. WinSDK = 15063) 
 
 ## Description
 This project was created as a proof-of-concept over a short amount of time. 
@@ -29,7 +29,7 @@ The code may not be perfect. It exists for demonstration and educational purpose
 
 ## How to use it / try it
 - Use your Desktop PC. Open Yandex Music site via Google Chrome (or Yandex Browser), auth and find Access token (cookee) in Developer Mode.  
-- Run my YandexMusic app, tap Settigs, save your token, then try to search&play some song. :)  
+- Run my YandexMusic app, tap Settings, save your token, then try to search&play some song. :)  
 
 
 ## Contribute/ing
@@ -53,7 +53,6 @@ Feel free to fork or improve this project :) There are 100500 thing to improve, 
 - phase 5 Tests/Intro   - 7/100
 
 
-
 ## Contribute!
 There's still a TON of things missing from this proof-of-concept (MVP) and areas of improvement 
 
@@ -63,7 +62,11 @@ There's still a TON of things missing from this proof-of-concept (MVP) and areas
 - https://github.com/MarshalX/yandex-music-token Open-sourced Access Token "getters" 
 
 ## TODO
-- Add Win SDK 15063 compatibility (use special native compiling magic).
+- Improve UI
+- Extend functionality (Albups, Popular Tracks, Janres, ...)
+- fix background playback
+- add auto-play when changing track(s)
+- Port Yandex.Music.API lib to UAP 14393 or .NET Standard 1.4 
 
 ## License
 Distributed under the MIT License.
@@ -72,7 +75,7 @@ Distributed under the MIT License.
 As is. No support. RnD only. DIY.
 
 ## .
-[m][e] June, 15 2025
+[m][e] June, 16 2025
 
 ![Logo](Images/footer.png)
 

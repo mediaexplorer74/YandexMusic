@@ -1,14 +1,14 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="15.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
-    <ProjectGuid>{E65F370F-52BC-4F32-AFC7-706F76480AD4}</ProjectGuid>
+    <ProjectGuid>{FEBDF715-48BB-46F2-ABC6-6FF32131B5B0}</ProjectGuid>
     <OutputType>AppContainerExe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>YandexMusicUWP</RootNamespace>
-    <AssemblyName>YandexMusic</AssemblyName>
+    <AssemblyName>YaMu</AssemblyName>
     <DefaultLanguage>en-US</DefaultLanguage>
     <TargetPlatformIdentifier>UAP</TargetPlatformIdentifier>
     <TargetPlatformVersion Condition=" '$(TargetPlatformVersion)' == '' ">10.0.19041.0</TargetPlatformVersion>
@@ -118,7 +118,8 @@
     <UseVSHostingProcess>false</UseVSHostingProcess>
     <ErrorReport>prompt</ErrorReport>
     <Prefer32Bit>true</Prefer32Bit>
-    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <UseDotNetNativeToolchain>false</UseDotNetNativeToolchain>
+    <AllowUnsafeBlocks>false</AllowUnsafeBlocks>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'">
     <OutputPath>bin\x64\Release\</OutputPath>
@@ -153,6 +154,56 @@
     </AppxManifest>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Assets\custom-twitter\LargeTile.scale-100.png" />
+    <Content Include="Assets\custom-twitter\LargeTile.scale-125.png" />
+    <Content Include="Assets\custom-twitter\LargeTile.scale-150.png" />
+    <Content Include="Assets\custom-twitter\LargeTile.scale-200.png" />
+    <Content Include="Assets\custom-twitter\LargeTile.scale-400.png" />
+    <Content Include="Assets\custom-twitter\SmallTile.scale-100.png" />
+    <Content Include="Assets\custom-twitter\SmallTile.scale-125.png" />
+    <Content Include="Assets\custom-twitter\SmallTile.scale-150.png" />
+    <Content Include="Assets\custom-twitter\SmallTile.scale-200.png" />
+    <Content Include="Assets\custom-twitter\SmallTile.scale-400.png" />
+    <Content Include="Assets\custom-twitter\SplashScreen.scale-100.png" />
+    <Content Include="Assets\custom-twitter\SplashScreen.scale-125.png" />
+    <Content Include="Assets\custom-twitter\SplashScreen.scale-150.png" />
+    <Content Include="Assets\custom-twitter\SplashScreen.scale-200.png" />
+    <Content Include="Assets\custom-twitter\SplashScreen.scale-400.png" />
+    <Content Include="Assets\custom-twitter\Square150x150Logo.scale-100.png" />
+    <Content Include="Assets\custom-twitter\Square150x150Logo.scale-125.png" />
+    <Content Include="Assets\custom-twitter\Square150x150Logo.scale-150.png" />
+    <Content Include="Assets\custom-twitter\Square150x150Logo.scale-200.png" />
+    <Content Include="Assets\custom-twitter\Square150x150Logo.scale-400.png" />
+    <Content Include="Assets\custom-twitter\Square44x44Logo.altform-lightunplated_targetsize-16.png" />
+    <Content Include="Assets\custom-twitter\Square44x44Logo.altform-lightunplated_targetsize-24.png" />
+    <Content Include="Assets\custom-twitter\Square44x44Logo.altform-lightunplated_targetsize-256.png" />
+    <Content Include="Assets\custom-twitter\Square44x44Logo.altform-lightunplated_targetsize-32.png" />
+    <Content Include="Assets\custom-twitter\Square44x44Logo.altform-lightunplated_targetsize-48.png" />
+    <Content Include="Assets\custom-twitter\Square44x44Logo.altform-unplated_targetsize-16.png" />
+    <Content Include="Assets\custom-twitter\Square44x44Logo.altform-unplated_targetsize-24.png" />
+    <Content Include="Assets\custom-twitter\Square44x44Logo.altform-unplated_targetsize-256.png" />
+    <Content Include="Assets\custom-twitter\Square44x44Logo.altform-unplated_targetsize-32.png" />
+    <Content Include="Assets\custom-twitter\Square44x44Logo.altform-unplated_targetsize-48.png" />
+    <Content Include="Assets\custom-twitter\Square44x44Logo.scale-100.png" />
+    <Content Include="Assets\custom-twitter\Square44x44Logo.scale-125.png" />
+    <Content Include="Assets\custom-twitter\Square44x44Logo.scale-150.png" />
+    <Content Include="Assets\custom-twitter\Square44x44Logo.scale-200.png" />
+    <Content Include="Assets\custom-twitter\Square44x44Logo.scale-400.png" />
+    <Content Include="Assets\custom-twitter\Square44x44Logo.targetsize-16.png" />
+    <Content Include="Assets\custom-twitter\Square44x44Logo.targetsize-24.png" />
+    <Content Include="Assets\custom-twitter\Square44x44Logo.targetsize-256.png" />
+    <Content Include="Assets\custom-twitter\Square44x44Logo.targetsize-32.png" />
+    <Content Include="Assets\custom-twitter\Square44x44Logo.targetsize-48.png" />
+    <Content Include="Assets\custom-twitter\StoreLogo.scale-100.png" />
+    <Content Include="Assets\custom-twitter\StoreLogo.scale-125.png" />
+    <Content Include="Assets\custom-twitter\StoreLogo.scale-150.png" />
+    <Content Include="Assets\custom-twitter\StoreLogo.scale-200.png" />
+    <Content Include="Assets\custom-twitter\StoreLogo.scale-400.png" />
+    <Content Include="Assets\custom-twitter\Wide310x150Logo.scale-100.png" />
+    <Content Include="Assets\custom-twitter\Wide310x150Logo.scale-125.png" />
+    <Content Include="Assets\custom-twitter\Wide310x150Logo.scale-150.png" />
+    <Content Include="Assets\custom-twitter\Wide310x150Logo.scale-200.png" />
+    <Content Include="Assets\custom-twitter\Wide310x150Logo.scale-400.png" />
     <Content Include="Assets\LargeTile.scale-100.png" />
     <Content Include="Assets\LargeTile.scale-125.png" />
     <Content Include="Assets\LargeTile.scale-150.png" />
@@ -207,26 +258,38 @@
     <Content Include="Assets\Wide310x150Logo.scale-200.png" />
   </ItemGroup>
   <ItemGroup>
-    <ApplicationDefinition Include="App.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </ApplicationDefinition>
-    <Page Include="LoginPage.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="MainPage.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-  </ItemGroup>
-  <ItemGroup>
     <PackageReference Include="Microsoft.NETCore.UniversalWindowsPlatform">
-      <Version>6.2.8</Version>
+      <Version>6.2.14</Version>
+    </PackageReference>
+    <PackageReference Include="Microsoft.UI.Xaml">
+      <Version>2.7.3</Version>
+    </PackageReference>
+    <PackageReference Include="Microsoft.Xaml.Behaviors.Uwp.Managed">
+      <Version>2.0.1</Version>
     </PackageReference>
     <PackageReference Include="Newtonsoft.Json">
       <Version>13.0.3</Version>
     </PackageReference>
+  </ItemGroup>
+  <ItemGroup>
+    <SDKReference Include="WindowsDesktop, Version=10.0.19041.0">
+      <Name>Windows Desktop Extensions for the UWP</Name>
+    </SDKReference>
+    <SDKReference Include="WindowsMobile, Version=10.0.19041.0">
+      <Name>Windows Mobile Extensions for the UWP</Name>
+    </SDKReference>
+  </ItemGroup>
+  <ItemGroup>
+    <ApplicationDefinition Include="App.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </ApplicationDefinition>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Assets\fluentui.ttf" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="YandexMusic_TemporaryKey.pfx" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Yandex.Music.Api\Yandex.Music.Api.csproj">
@@ -239,7 +302,14 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <None Include="YandexMusic_TemporaryKey.pfx" />
+    <Page Include="LoginPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="MainPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
   </ItemGroup>
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '14.0' ">
     <VisualStudioVersion>14.0</VisualStudioVersion>
