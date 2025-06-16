@@ -16,9 +16,8 @@ So, look at Wiki: https://github.com/mediaexplorer74/YandexMusic/wiki/
 ![Windows 10 Mobile](Images/sshot03.png)
 
 ## Solution (app) structure
-- Special uap version of Yandex.Music.Api lib (Win SDK 16299 used. draft)
-- Auto-gererated Yandex.Music wp app (Win SDK 16299 used. draft)
-
+- Special uap version of Yandex.Music.Api lib (Win SDK 16299 used. Draft)
+- Auto-gererated (with help of Trae AI IDE) Yandex.Music UWP app (Win SDK 16299 used. Draft)
 
 ## Status 
 - Experimenting with Trae IDE 
