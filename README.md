@@ -1,4 +1,5 @@
-# Yandex.Music 1.0 - lite branch ![logo](Images/logo.png)
+# Yandex.Music 1.0 - lite branch 
+![logo](Images/logo.png)
 
 My 2nd attempt to remake YandexMusic uwp app. This is planned as very lite edition of YandexMusic client (with only simplest function: search&play song "item").
 
