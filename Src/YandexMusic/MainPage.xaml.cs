@@ -4,43 +4,74 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using Windows.Media.Playback;
+using Windows.Storage;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
+using Windows.UI.Xaml.Navigation;
 using Yandex.Music.Api;
+using Yandex.Music.Api.Models.Account;
 using Yandex.Music.Api.Models.Track;
 
 namespace YandexMusicUWP
 {
     public sealed partial class MainPage : Page
     {
-        readonly string AccessToken = ""; // Replace with your actual access token
+        private string _authToken;
         private readonly YandexMusicApi _api = new YandexMusicApi(); 
         private List<YTrack> _tracks = new List<YTrack>();
         private YTrack _selectedTrack;
 
+
         public MainPage()
         {
             InitializeComponent();
+            LoadToken();//InitializeApi();
+        }
+
+        protected override void OnNavigatedTo(NavigationEventArgs e)
+        {
+            base.OnNavigatedTo(e);
+            LoadToken();
             InitializeApi();
         }
 
+        private void LoadToken()
+        {
+            var localSettings = ApplicationData.Current.LocalSettings;
+            if (localSettings.Values.ContainsKey("YandexMusicToken"))
+            {
+                _authToken = localSettings.Values["YandexMusicToken"].ToString();
+            }
+        }
+
+
         private async void InitializeApi()
         {
-            // Authenticate guest account
+            // Пытаемся авторизоваться по полной 
             try
             {
                 Yandex.Music.Api.Common.AuthStorage storage = new Yandex.Music.Api.Common.AuthStorage()
                 {
                     IsAuthorized = true,
-                    Token = AccessToken,
+                    Token = _authToken,
                 };
                 await _api.User.AuthorizeAsync(storage, default);
             }
             catch (Exception ex)
-            {
+            { // Проблемы. Значит, guest account
                 Debug.WriteLine("[ex] InitializeApi - User.Authorize error: " + ex.Message);
+
+                // Попытка авторизоваться как гость
+                //await _api.User.AuthorizeAsync();
             }
         }
+
+
+        private void SettingsButton_Click(object sender, RoutedEventArgs e)
+        {
+            Frame.Navigate(typeof(LoginPage));
+        }
+
 
         private async void SearchButton_Click(object sender, RoutedEventArgs e)
         {
@@ -51,7 +82,7 @@ namespace YandexMusicUWP
                 Yandex.Music.Api.Common.AuthStorage storage = new Yandex.Music.Api.Common.AuthStorage()
                 {
                     IsAuthorized = true,
-                    Token = AccessToken,
+                    Token = _authToken,
                 };
 
                 // Perform search
@@ -104,7 +135,7 @@ namespace YandexMusicUWP
                 Yandex.Music.Api.Common.AuthStorage authstorage = new Yandex.Music.Api.Common.AuthStorage()
                 {
                     IsAuthorized = true,
-                    Token = AccessToken,
+                    Token = _authToken,
                 };
 
                 // Get track download metadata

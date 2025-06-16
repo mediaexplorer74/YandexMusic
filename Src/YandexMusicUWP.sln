@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.14.36203.30
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "YandexMusicUWP", "YandexMusicUWP\YandexMusicUWP.csproj", "{E65F370F-52BC-4F32-AFC7-706F76480AD4}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "YandexMusic", "YandexMusic\YandexMusic.csproj", "{E65F370F-52BC-4F32-AFC7-706F76480AD4}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Yandex.Music.Api", "Yandex.Music.Api\Yandex.Music.Api.csproj", "{FC36E655-F10D-4C10-8105-FAFD247D1234}"
 EndProject
